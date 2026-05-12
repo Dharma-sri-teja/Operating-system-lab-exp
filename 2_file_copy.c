@@ -86,22 +86,4 @@ printf("=========================================\n");
 return 0;
 }
 
-/*
-* Compilation and Execution:
-* gcc -o file_copy 2_file_copy.c
-* ./file_copy source.txt dest.txt
-* 
-* Key System Calls Used:
-* 1. open(): Opens a file for reading/writing
-*    - O_RDONLY: Read only
-*    - O_WRONLY | O_CREAT | O_TRUNC: Write only, create if doesn't exist, truncate if exists
-* 
-* 2. read(): Reads data from file descriptor into buffer
-*    - Returns number of bytes read, 0 for EOF, -1 for error
-* 
-* 3. write(): Writes data from buffer to file descriptor
-*    - Returns number of bytes written
-* 
-* 4. close(): Closes file descriptor and frees associated resources
-*/
 
