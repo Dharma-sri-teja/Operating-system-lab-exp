@@ -1,11 +1,4 @@
-﻿/*
-* Program: Inter-Process Communication (IPC) using Message Queue
-* Description: Implements IPC using message queue with System V IPC
-* This includes:
-* 1. A sender process that sends messages to queue
-* 2. A receiver process that receives messages from queue
-* 
-* System Calls: msgget(), msgsnd(), msgrcv(), msgctl()
+
 */
 
 #include <stdio.h>
@@ -185,54 +178,4 @@ exit(1);
 
 return 0;
 }
-
-/*
-* Compilation and Execution:
-* gcc -o message_queue_ipc 10_message_queue_ipc.c
-* ./message_queue_ipc
-* 
-* Execution Steps:
-* 1. First terminal: Run option 3 to create message queue
-* 2. First terminal: Run option 2 (Receiver Process) - it will wait for messages
-* 3. Second terminal: Run option 1 (Sender Process) and send messages
-* 4. Receiver will process messages as they arrive
-* 5. After both complete, run option 4 to delete message queue
-* 
-* Key System Calls:
-* 1. msgget(): Creates/accesses message queue
-*    - IPC_CREAT: Create if doesn't exist
-*    - 0666: Permissions (read/write for all)
-* 
-* 2. msgsnd(): Sends message to queue
-*    - Parameters: queue_id, message, size, flags
-*    - Returns 0 on success, -1 on error
-* 
-* 3. msgrcv(): Receives message from queue
-*    - Parameters: queue_id, message, max_size, msg_type, flags
-*    - Returns number of bytes read on success
-* 
-* 4. msgctl(): Performs control operations
-*    - IPC_RMID: Remove message queue
-* 
-* Advantages:
-* - Asynchronous communication (processes can run independently)
-* - FIFO order guaranteed
-* - Automatic synchronization
-* - Suitable for sequential message passing
-* - Process-independent (processes don't need to know each other)
-* 
-* Disadvantages:
-* - Slower than shared memory
-* - Limited to same machine
-* - Fixed queue size may limit throughput
-* - Complexity in managing message types
-* 
-* Message Type:
-* - Positive integer specifying message type
-* - Receiver can specify which type to receive (selective reception)
-* - In this example, we use type 1 for all messages
-* 
-* Note: Use ipcs command to view message queues
-*       Use ipcrm -q <msgid> to manually remove message queue
-*/
 
